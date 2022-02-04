@@ -28,6 +28,7 @@ find_package(visualization_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_srvs REQUIRED)
+find_package(nav2_msgs REQUIRED)
 
 find_package(OpenVDB REQUIRED)
 remove_definitions(-DDISABLE_LIBUSB-1.0)
@@ -67,6 +68,7 @@ set(dependencies
   tf2_sensor_msgs
   visualization_msgs
   builtin_interfaces
+  nav2_msgs
 )
 
 set(library_name spatio_temporal_voxel_layer_core)
