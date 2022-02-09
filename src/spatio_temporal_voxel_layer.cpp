@@ -973,17 +973,17 @@ void SpatioTemporalVoxelLayer::clearArea(
 void SpatioTemporalVoxelLayer::ClearGridExceptRegionCallback(
   const std::shared_ptr<rmw_request_id_t>/*request_header*/,
   const std::shared_ptr<nav2_msgs::srv::ClearCostmapExceptRegion::Request> request,
-  std::shared_ptr<nav2_msgs::srv::ClearCostmapExceptRegion::Response> response)
+  std::shared_ptr<nav2_msgs::srv::ClearCostmapExceptRegion::Response>)
 /*****************************************************************************/
 {
   if (_mapping_mode) {
-    RCLCPP_WARN(node_->get_logger(),
+    RCLCPP_WARN(logger_,
       "Received request to clear the grid while on mapping mode. Not doing anything.");
     return;
   }
 
-  RCLCPP_INFO(node_->get_logger(),
-    "Received request to clear the grid except a square region of side " + std::to_string(request->reset_distance));
+  RCLCPP_INFO(logger_,
+    "Received request to clear the grid except a square region of side %f", request->reset_distance);
 
   _clear_grid_except_region = true;
   _reset_distance = request->reset_distance;
