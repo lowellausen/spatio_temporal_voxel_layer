@@ -166,10 +166,10 @@ void SpatioTemporalVoxelLayer::onInitialize(void)
   auto clear_grid_except_region_srv_callback = std::bind(
     &SpatioTemporalVoxelLayer::ClearGridExceptRegionCallback, this, _1, _2, _3);
   std::string clear_grid_except_topic = "stvl_clear_grid_except";
-  clear_grid_except_service = rclcpp_node_->create_service<nav2_msgs::srv::ClearCostmapExceptRegion>(
+  clear_grid_except_service = node->create_service<nav2_msgs::srv::ClearCostmapExceptRegion>(
     clear_grid_except_topic, clear_grid_except_region_srv_callback);
 
-  std::stringstream ss(topics_string);
+  std::stringstream ss(_topics_string);
   std::string source;
   while (ss >> source) {
     // get the parameters for the specific topic
