@@ -978,7 +978,7 @@ void SpatioTemporalVoxelLayer::ClearGridExceptRegionCallback(
 {
   if (_mapping_mode) {
     RCLCPP_WARN(logger_,
-      "Received request to clear the grid while on mapping mode. Not doing anything.");
+      "Received request to clear the grid while on mapping mode. Nothing will be done.");
     return;
   }
 
