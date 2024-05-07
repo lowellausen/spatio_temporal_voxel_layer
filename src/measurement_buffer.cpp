@@ -252,9 +252,11 @@ bool MeasurementBuffer::UpdatedAtExpectedRate(void) const
   const rclcpp::Duration update_time = clock_->now() - _last_updated;
   bool current = update_time.seconds() <= _expected_update_rate.seconds();
   if (!current) {
-    RCLCPP_WARN(
+    RCLCPP_WARN_THROTTLE(
       logger_,
-      "%s buffer updated in %.2fs, it should be updated every %.2fs.",
+      *clock_,
+      1000,
+      "%s buffer updated in %.2fs, it should be updated every %.2fs. Throttled msg.",
       _topic_name.c_str(), update_time.seconds(),
       _expected_update_rate.seconds());
   }
